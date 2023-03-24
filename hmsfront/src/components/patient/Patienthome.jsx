@@ -2,7 +2,6 @@ import bgimg from "../../img/bg4.jpg";
 import userdpmale from "../../img/userdp.jpg"
 import userdpfemale from "../../img/userdp2.jpg"
 import { Navig } from "../common/Navig";
-// import moment from "moment";
 import axios from "axios";
 import React, { useRef } from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
@@ -51,12 +50,8 @@ export let Patienthome = (props) => {
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
     const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 
-    // const [age, setAge] = useState("");
-    // setAge(moment().diff(uid["pid"]["dob"], "years"));
-
     const [prof, setProf] = useState("col-8");
     const [updt, setUpdt] = useState("collapse");
-    const [but, setBut] = useState("button");
     const [icon, setIcon] = useState(<BsFillPencilFill></BsFillPencilFill>);
     const st1 = "btn btn-outline-dark btn-lg mt-3 mb-3";
     const st2 = "btn btn-dark btn-lg mt-3 mb-3";
@@ -99,25 +94,24 @@ export let Patienthome = (props) => {
     }
     const getDoctor = async (did) => {
         console.log("did is " + did);
-
         const result = await axios.get(props.p + `/getDoctorByDid?did=${did}`);
         console.log(result.data);
-
         setDoctor(result.data);
     }
+
+
 
     return (
         <div>
             <Navig></Navig>
-            <div style={{ backgroundImage: `url(${bgimg})`, height: "73vh", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+            <div style={{ backgroundImage: `url(${bgimg})`, height: "72vh", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-1">
                         </div>
-                        <div className="col-6" style={{padding:"0 50px 0 0"}}>
+                        <div className="col-6" style={{padding:"0 50px 0 50px"}}>
                             <form action="" method="get">
                                 <div className="card mt-5">
-
                                     <div className="container-fluid">
                                         <div className="row shadow">
                                             <div className="col-4">
@@ -126,20 +120,15 @@ export let Patienthome = (props) => {
                                                     <h3 className="mt-3 text-dark">{uid["pid"]["pname"]}</h3>
                                                     <h5 className="text-muted">Patient</h5>
                                                     <br />
-
                                                     <button type="button" className="btn btn-outline-dark pb-2 mb-5" onClick={() => {
                                                         if (prof === "col-8") {
                                                             setIcon(<BsXSquare></BsXSquare>); setProf("collapse"); setUpdt("col-8");
-
-
                                                         }
                                                         else {
                                                             setIcon(<BsFillPencilFill></BsFillPencilFill>); setProf("col-8"); setUpdt("collapse");
                                                         }
                                                     }}>{icon}</button>
-
                                                 </div>
-
                                             </div>
                                             <div className={prof}>
                                                 <div className="card-body">
@@ -190,18 +179,15 @@ export let Patienthome = (props) => {
                                                                     <p><strong><em>{uid["uid"]["address"]}</em></strong></p>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                             <div className={updt}>
                                                 <Patientupdate p={props.p} pdata={uid["pid"]}></Patientupdate>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </form>
                         </div>
@@ -234,28 +220,25 @@ export let Patienthome = (props) => {
                             </div>
                         </div>
                         <div className="col-1">
-
                         </div>
-
                     </div>
+                    <br />
                     <br />
                     <br />
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-1">
-
                             </div>
                             <div className="col-2 mt-1">
                                 <button type="button" className={buthold} onClick={() => { buthold === st1 ? setPage(<History u={uid["uid"]} p={props.p}></History>) : togglebut(); scrollToRef(line1Ref) }}><strong>History&ensp;<BsClockHistory></BsClockHistory></strong></button>
                             </div>
                             <div className="col-2 mt-2">
                                 <div className="col-6 mt-2">
-
                                 </div>
                             </div>
                             <div className="col-6 mt-1">
                                 <div>
-                                    <Dropdown isOpen={dropdownOpen1} toggle={toggle1} direction="end">
+                                <Dropdown isOpen={dropdownOpen1} toggle={toggle1} direction="end">
                                         <span ><strong>Search by :&emsp; </strong></span>
                                         <DropdownToggle caret color="outline-dark btn-lg mt-3 mb-3"><strong>Doctors</strong></DropdownToggle>
                                         <DropdownMenu>
@@ -275,9 +258,7 @@ export let Patienthome = (props) => {
                                                     </DropdownItem>
                                                 ))
                                             }
-
                                         </DropdownMenu>
-                                    
                                         &nbsp;
                                     {/* <button type="button" className={buthold} onClick={() => { buthold === st1 ? setPage(<Doctors p={props.p} pid={uid["pid"]["pid"]}></Doctors>) : togglebut(); scrollToRef(line1Ref) }}><strong>Doctors</strong></button>
                                     &nbsp; */}
@@ -286,14 +267,12 @@ export let Patienthome = (props) => {
                                     <button type="button" className={buthold} onClick={() => { buthold === st1 ? setPage(<Hospitals p={props.p} pid={uid["pid"]["pid"]}></Hospitals>) : togglebut(); scrollToRef(line1Ref)  }}><strong>Hospitals</strong></button>
                                     &nbsp;
                                     <button type="button" className={buthold} onClick={() => { buthold === st1 ? setPage(<Medservs p={props.p} pid={uid["pid"]["pid"]}></Medservs>) : togglebut(); scrollToRef(line1Ref)  }}><strong>Medical Services</strong></button>
-                                    </Dropdown>
-
+                                </Dropdown>
                                 </div>
                             </div>
                             <hr className="mt-1" />
                         </div>
                     </div>
-
 
                     <div className="row pt-3">
                         <div style={{ height: "600px", overflowY: "scroll", padding:"0 100px 0px 100px" }}>
@@ -302,7 +281,6 @@ export let Patienthome = (props) => {
                     </div>
                     <div  ref={line1Ref}>
                     </div>
-
                 </div>
             </div>
         </div >

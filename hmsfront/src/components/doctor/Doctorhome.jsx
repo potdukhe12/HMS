@@ -3,7 +3,7 @@ import bgimg from "../../img/bg6.jpg";
 import userdpmale from "../../img/doctordp.jpg"
 import userdpfemale from "../../img/doctordp2.jpg"
 import { Navig } from "../common/Navig";
-import { BsFillPencilFill, BsSave, BsCalendarEvent, BsEnvelope, BsPhone, BsXSquare } from "react-icons/bs";
+import { BsFillPencilFill, BsCalendarEvent, BsEnvelope, BsPhone, BsXSquare } from "react-icons/bs";
 
 import React, { useRef } from 'react';
 import { useEffect, useState } from "react";
@@ -25,7 +25,6 @@ export let Doctorhome = (props) => {
 
     const [prof, setProf] = useState("col-8");
     const [updt, setUpdt] = useState("collapse");
-    const [but, setBut] = useState("button");
     const [icon, setIcon] = useState(<BsFillPencilFill></BsFillPencilFill>);
 
     const [docapmt, setDocapmt] = useState([]);

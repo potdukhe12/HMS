@@ -1,18 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-// import { Login } from './components/user/Login';
 import { Login } from './components/user/Newlogin';
 import { Home } from './components/common/Home';
 import Footer from './components/common/Footer';
 import { Patienthome } from './components/patient/Patienthome';
 import { Treatment } from './components/tables/Treatment';
 import { Doctorhome } from './components/doctor/Doctorhome';
-import { Addappointment } from './components/workings/Addappointment';
 import { SignupUser } from './components/user/SignupUser';
 import { Hospital } from './components/tables/Hospital';
 import { Doctor } from './components/tables/Doctor';
-// import { Doctortest } from './components/doctor/Doctortest';
-// import { Login } from './components/user/Newlogin';
 import { Hospitalhome } from './components/hospital/Hospitalhome';
 import { Doctorview } from './components/hospital/Doctorview';
 

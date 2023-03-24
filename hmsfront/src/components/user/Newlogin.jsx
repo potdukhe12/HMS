@@ -56,24 +56,24 @@ export let Login = (props) => {
   return (
     <div>
         <Navig></Navig>
-        <div style={{backgroundImage: `url(${bgimg})`, height: "80vh", backgroundRepeat:"no-repeat",backgroundSize:"contain"}}>
+        <div style={{backgroundImage: `url(${bgimg})`, height: "80vh", backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
         <br />
         <br />
         <br />
             <div className="container">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-8">
                     </div>
-                    <div className="col-4 border border-primary rounded bg-white shadow">
+                    <div className="col-4 border border-primary rounded bg-white shadow" style={{width:"420px"}}>
     
-                        <h1 className="text-primary"><strong>Login</strong></h1>
+                        <h1 className="text-primary" style={{padding:"8px 0 0 0"}}><strong>Login</strong></h1>
                         <hr style={{color: "green"}}/>
                         
                         <form onSubmit={handleSubmit}>
 
                         <div className="mb-3">
-                            <label for="uname" className="form-label"><strong>User Id</strong></label>
-                            <input type="text" className="form-control" name="uname" id="uname" placeholder="Enter your UID" onChange={(event) => setUsername(event.target.value)}/>
+                            <label for="uname" className="form-label"><strong>User Name</strong></label>
+                            <input type="text" className="form-control" name="uname" id="uname" placeholder="Enter your User Name" onChange={(event) => setUsername(event.target.value)}/>
                         </div>
                         <div className="mb-3">
                             <label for="pwd" className="form-label"><strong>Password</strong></label>
@@ -88,8 +88,8 @@ export let Login = (props) => {
                         </div>
                         {errorMsg && <div className="text-danger mb-3">{errorMsg}</div>}
                     </div>
-                    <div className="col-2">
-                    </div>
+                    {/* <div className="col-1">
+                    </div> */}
                 </div>
             </div>
         </div>

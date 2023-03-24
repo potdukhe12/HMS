@@ -5,7 +5,7 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import bgimg from "../../img/bg5.jpg";
 import userdp from "../../img/hospital-avatar.png"
 import { Navig } from "../common/Navig";
-import { BsFillPencilFill, BsSave, BsCalendarEvent, BsEnvelope, BsPhone, BsCheckCircle, BsXSquare } from "react-icons/bs";
+import { BsFillPencilFill, BsEnvelope, BsPhone, BsXSquare } from "react-icons/bs";
 
 import { useEffect, useState } from "react";
 import { Hospitalupdate } from "./Hospitalupdate";
@@ -20,40 +20,24 @@ export let Hospitalhome = (props) => {
     const navigate = useNavigate()
     const location = useLocation();
     const uid = location.state || {};
-    // console.log("info...");
-    // console.log(uid["hid"]);
-
-    var ageDifMs = Date.now() - Date.parse(uid["hid"]["dob"]);
-    var ageDate = new Date(ageDifMs); // miliseconds from epoch
-    const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 
     const [prof, setProf] = useState("col-8");
     const [updt, setUpdt] = useState("collapse");
-    const [but, setBut] = useState("button");
     const [icon, setIcon] = useState(<BsFillPencilFill></BsFillPencilFill>);
 
     const [doc, setDoc] = useState([]);
     const [apmt, setApmt] = useState([]);
 
-    const [disval, setDisval] = useState("");
-    const [butval, setButval] = useState("");
-
-
-
     const convDate = (d) => {
         const dt1 = Date.parse(d);
-        // console.log(dt1);
         const dt2 = new Date(dt1);
-        // console.log();
         const date = dt2.getDate() + "/" + (dt2.getMonth() + 1) + "/" + dt2.getFullYear();
         return date;
     }
 
     const convTime = (d) => {
         const tm1 = Date.parse(d);
-        // console.log(tm1);
         const tm2 = new Date(tm1);
-        // console.log();
         const time = tm2.getHours() + ":" + tm2.getMinutes();
         return time;
     }
@@ -61,35 +45,25 @@ export let Hospitalhome = (props) => {
     useEffect(() => {
         getDoc();
         getApmt();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const getDoc = async () => {
-
-
         const result = await axios.get(props.p + `/getDoctorByHid?hid=${uid["hid"]["hid"]}`);
         console.log(result.data);
-
         setDoc(result.data);
-
     }
     const getApmt = async () => {
-
-
         const result = await axios.get(props.p + `/getApmtByHid?hid=${uid["hid"]["hid"]}`);
         console.log(result.data);
-
         setApmt(result.data);
-
     }
+
+
 
     return (
         <div>
             <Navig></Navig>
             <div style={{ backgroundImage: `url(${bgimg})`, height: "80vh", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
-                <div>
-
-                </div>
                 <div className="container-fluid" >{/* style={{width:"1500px", overflowX: "scroll"}} */}
                     <div className="row">
                         <div className="col-1">
@@ -97,7 +71,6 @@ export let Hospitalhome = (props) => {
                         <div className="col-6" style={{padding:"0 50px 0 50px"}}>
                             <form action="" method="get">
                                 <div className="card mt-5">
-
                                     <div className="container-fluid" style={{height: "445px", overflowY: "scroll"}}>
                                         <div className="row shadow">
                                             <div className="col-4">
@@ -106,7 +79,6 @@ export let Hospitalhome = (props) => {
                                                     <h3 className="mt-3 text-dark">{uid["hid"]["hname"]}</h3>
                                                     <h5 className="text-muted">Hospital</h5>
                                                     <br />
-
                                                     <button type="button" className="btn btn-outline-dark pb-2 mb-5" onClick={() => {
                                                         if (prof === "col-8") {
                                                             setIcon(<BsXSquare></BsXSquare>); setProf("collapse"); setUpdt("col-8");
@@ -115,15 +87,12 @@ export let Hospitalhome = (props) => {
                                                             setIcon(<BsFillPencilFill></BsFillPencilFill>); setProf("col-8"); setUpdt("collapse");
                                                         }
                                                     }}>{icon}</button>
-
                                                 </div>
-
                                             </div>
                                             <div className={prof}  style={{padding:"20px 0 0px 0"}}>
                                                 <div className="card-body">
                                                     <h4 className="card-title"><strong>Profile</strong></h4>
                                                     <div className="text-left">
-                                                        
                                                         <h6 style={{ textAlign: "left" }}>Contact Details:</h6>
                                                         <hr className="mt-1" />
                                                         <div style={{ textAlign: "left" }}>
@@ -156,18 +125,15 @@ export let Hospitalhome = (props) => {
                                                                     <p><strong><em>{uid["hid"]["user"]["address"]}</em></strong></p>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                             <div className={updt}>
                                                 <Hospitalupdate p={props.p} hdata={uid["hid"]}></Hospitalupdate>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </form>
                         </div>
@@ -232,10 +198,10 @@ export let Hospitalhome = (props) => {
                             <div>
                                 <div class="table-responsive rounded">
                                     <table class="table table-striped
-                                table-hover	
-                                table-borderless
-                                table-primary
-                                align-middle">
+                                            table-hover	
+                                            table-borderless
+                                            table-primary
+                                            align-middle">
                                         <thead class="table-dark">
                                             <tr>
                                                 <th>Appointment ID</th>
@@ -248,8 +214,6 @@ export let Hospitalhome = (props) => {
                                             </tr>
                                         </thead>
                                         <tbody class="table-group-divider">
-
-
                                             {
                                                 apmt.map((a) => (
                                                     <tr class="table-light" >
@@ -263,7 +227,6 @@ export let Hospitalhome = (props) => {
                                                     </tr>
                                                 ))
                                             }
-
                                         </tbody>
                                         <tfoot>
 

@@ -78,9 +78,6 @@ export let Login = (props) => {
 
     return (
         <div>
-            {/* <Uinfo.Provider value={uidd}>
-                    <Userhome></Userhome>
-                </Uinfo.Provider> */}
             <Navig></Navig>
             <div style={{ backgroundImage: `url(${bgimg})`, height: "75vh", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                 <br />
@@ -90,9 +87,9 @@ export let Login = (props) => {
                     <div className="row">
                         <div className="col-6">
                         </div>
-                        <div className="col-4 border border-primary rounded bg-white shadow">
+                        <div className="col-6 border border-primary rounded bg-white shadow">
 
-                            <h1 className="text-primary"><strong>Login</strong></h1>
+                            <h1 className="text-primary" style={{padding:"5px 0 0 0"}}><strong>Login</strong></h1>
                             <hr style={{ color: "green" }} />
 
                             <form>
@@ -114,8 +111,8 @@ export let Login = (props) => {
                                 <a href="/signup" style={{ textUnderlineOffset: "3px" }}>Don't have an account? Sign Up</a>
                             </div>
                         </div>
-                        <div className="col-2">
-                        </div>
+                        {/* <div className="col-2">
+                        </div> */}
                     </div>
                 </div>
             </div>
